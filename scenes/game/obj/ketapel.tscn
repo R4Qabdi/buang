@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b82us6rh8pnie"]
+
+[ext_resource type="Script" path="res://scenes/game/obj/ketapel.gd" id="1_8iojs"]
+[ext_resource type="Texture2D" uid="uid://bdg4jfq11jl6h" path="res://assets/anim/ketapelWeapon.png" id="2_rj7pr"]
+[ext_resource type="AudioStream" uid="uid://ips77xfg7jad" path="res://assets/musics/Hitted.wav" id="3_g2m14"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdk0o"]
+
+[node name="ketapel" type="Node2D"]
+script = ExtResource("1_8iojs")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qdk0o")
+
+[node name="mask" type="Sprite2D" parent="."]
+texture = ExtResource("2_rj7pr")
+
+[node name="cd" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="tembak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_g2m14")
+bus = &"sfx"
+
+[connection signal="timeout" from="cd" to="." method="_on_cd_timeout"]

@@ -1,0 +1,264 @@
+[gd_scene format=3 uid="uid://dvwopgn7pm0l8"]
+
+[node name="option" type="Node2D"]
+process_mode = 3
+position = Vector2(640, 128)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="optiontab" type="TabContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.178
+anchor_right = 0.5
+anchor_bottom = 0.178
+offset_left = -512.0
+offset_top = -32.16
+offset_right = 512.0
+offset_bottom = 383.84
+grow_horizontal = 2
+current_tab = 0
+
+[node name="game" type="TabBar" parent="Control/optiontab"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="continue" type="Button" parent="Control/optiontab/game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 97.0
+offset_right = 128.0
+offset_bottom = 129.0
+grow_horizontal = 2
+text = "Continue"
+
+[node name="tomain" type="Button" parent="Control/optiontab/game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 161.0
+offset_right = 128.0
+offset_bottom = 193.0
+grow_horizontal = 2
+text = "Exit to main menu"
+
+[node name="todesktop" type="Button" parent="Control/optiontab/game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 225.0
+offset_right = 128.0
+offset_bottom = 257.0
+grow_horizontal = 2
+text = "Exit to desktop"
+
+[node name="Audio" type="TabBar" parent="Control/optiontab"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="master" type="HSlider" parent="Control/optiontab/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 81.0
+offset_right = 432.0
+offset_bottom = 113.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="mutemaster" type="Button" parent="Control/optiontab/Audio/master"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+text = "M"
+
+[node name="Label" type="Label" parent="Control/optiontab/Audio/master"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 144.0
+text = "Master Volume"
+vertical_alignment = 1
+
+[node name="sfx" type="HSlider" parent="Control/optiontab/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 161.0
+offset_right = -64.0
+offset_bottom = 193.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="mutesfx" type="Button" parent="Control/optiontab/Audio/sfx"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+text = "M"
+
+[node name="Label" type="Label" parent="Control/optiontab/Audio/sfx"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 144.0
+text = "SFX Volume"
+vertical_alignment = 1
+
+[node name="music" type="HSlider" parent="Control/optiontab/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 96.0
+offset_top = 161.0
+offset_right = 432.0
+offset_bottom = 193.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="mutemusic" type="Button" parent="Control/optiontab/Audio/music"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+text = "M"
+
+[node name="Label" type="Label" parent="Control/optiontab/Audio/music"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 144.0
+text = "Music Volume"
+vertical_alignment = 1
+
+[node name="Graphics" type="TabBar" parent="Control/optiontab"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="window" type="OptionButton" parent="Control/optiontab/Graphics"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.003
+anchor_right = 0.25
+anchor_bottom = 0.003
+offset_left = -128.0
+offset_top = 159.941
+offset_right = 128.0
+offset_bottom = 191.941
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "720x1280"
+popup/item_1/text = "768x1366"
+popup/item_1/id = 1
+popup/item_2/text = "1080x1920"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Control/optiontab/Graphics/window"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 256.0
+text = "Window size"
+vertical_alignment = 1
+
+[node name="fullscreen" type="Button" parent="Control/optiontab/Graphics"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.003
+anchor_right = 0.25
+anchor_bottom = 0.003
+offset_left = -128.0
+offset_top = 63.941
+offset_right = 128.0
+offset_bottom = 95.941
+toggle_mode = true
+text = "Full Screen Mode"
+
+[node name="Config" type="TabBar" parent="Control/optiontab"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="switch" type="Panel" parent="Control/optiontab/Config"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.125
+offset_top = 97.0
+offset_right = 384.0
+offset_bottom = 129.0
+
+[node name="switch" type="CheckButton" parent="Control/optiontab/Config/switch"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 384.0
+offset_bottom = 31.0
+button_pressed = true
+text = "Scroll for switching weapon"
+
+[node name="zoom" type="Panel" parent="Control/optiontab/Config"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.125
+offset_top = 161.0
+offset_right = 384.0
+offset_bottom = 193.0
+
+[node name="zoom" type="CheckButton" parent="Control/optiontab/Config/zoom"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 384.0
+offset_bottom = 31.0
+disabled = true
+text = "Scroll for zooming camera"
+
+[node name="mouse" type="Panel" parent="Control/optiontab/Config"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.125
+offset_top = 225.16
+offset_right = 384.0
+offset_bottom = 257.16
+
+[node name="mouse" type="CheckButton" parent="Control/optiontab/Config/mouse"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 384.0
+offset_bottom = 31.0
+text = "show mouse trail"
+
+[node name="close" type="Button" parent="Control"]
+layout_mode = 1
+offset_left = 480.0
+offset_top = -32.0
+offset_right = 512.0
+text = "X"
+metadata/_edit_use_anchors_ = true

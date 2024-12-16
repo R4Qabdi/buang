@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8f3u4scdcnou"]
+
+[ext_resource type="Script" path="res://scenes/game/effects/kenaijo.gd" id="1_xlh1c"]
+[ext_resource type="AudioStream" uid="uid://bpvxb3sr811qi" path="res://assets/musics/hit sapu lidi.WAV" id="2_y15dt"]
+
+[sub_resource type="Curve" id="Curve_n8yar"]
+_data = [Vector2(0, 1), 0.0, -2.04354, 0, 0, Vector2(0.359091, 0.818868), 0.0, 1.29453, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3biy2"]
+curve = SubResource("Curve_n8yar")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2nywg"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_max = 98.0
+gravity = Vector3(0, 98, 0)
+scale_min = 4.0
+scale_max = 8.0
+scale_curve = SubResource("CurveTexture_3biy2")
+color = Color(2.79158e-06, 0.464739, 0.204902, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = 1.0
+
+[node name="kenaijo" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_2nywg")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.7
+script = ExtResource("1_xlh1c")
+
+[node name="sakitan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y15dt")
+bus = &"sfx"
+
+[connection signal="finished" from="." to="." method="_on_finished"]

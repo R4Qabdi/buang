@@ -1,0 +1,279 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqcqc8ikekhfj"]
+
+[ext_resource type="Script" path="res://scenes/menus/victory.gd" id="1_kholb"]
+[ext_resource type="AudioStream" uid="uid://d11ifuwcrqivg" path="res://assets/musics/victory.WAV" id="2_ey05s"]
+
+[sub_resource type="Animation" id="Animation_2g4s6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("credit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -512)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("credit/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_riglm"]
+resource_name = "option"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("credit:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -512), Vector2(0, -128), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("credit/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrapx"]
+_data = {
+"RESET": SubResource("Animation_2g4s6"),
+"option": SubResource("Animation_riglm")
+}
+
+[node name="victory" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_kholb")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 1152.0
+offset_bottom = 512.0
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+text = "THANK YOU FOR PLAYING
+
+"
+horizontal_alignment = 1
+
+[node name="again" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 224.0
+offset_right = 464.0
+offset_bottom = 288.0
+text = "Try Again"
+
+[node name="credit" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 224.0
+offset_right = 768.0
+offset_bottom = 288.0
+text = "Credits"
+
+[node name="score" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 144.0
+offset_right = 640.0
+offset_bottom = 176.0
+
+[node name="Label2" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 144.0
+offset_bottom = 176.0
+grow_horizontal = 2
+text = "YOUR SCORE   :"
+vertical_alignment = 1
+
+[node name="back" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 800.0
+offset_top = 32.0
+offset_right = 992.0
+offset_bottom = 63.0
+text = "back to main menu -->"
+
+[node name="credit" type="Node2D" parent="."]
+position = Vector2(0, -512)
+
+[node name="Control" type="Control" parent="credit"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="credit/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 108.0
+offset_top = 128.0
+offset_right = 1132.0
+offset_bottom = 512.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="credit/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_right = 0.062
+offset_left = 0.511997
+offset_top = 64.0
+offset_right = 896.512
+offset_bottom = 320.0
+metadata/_edit_use_anchors_ = true
+
+[node name="jusul" type="Label" parent="credit/Control/Panel/RichTextLabel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_right = 192.0
+offset_bottom = 32.0
+grow_horizontal = 2
+text = "Buang Sampah"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="credit/Control/Panel/RichTextLabel/jusul"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 32.0
+offset_bottom = 211.0
+grow_horizontal = 2
+text = "Writer :
+
+Music :
+Sound effect :
+Graphic designer :
+
+Programmer :
+"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="credit/Control/Panel/RichTextLabel/jusul/Label2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.083
+anchor_right = 1.083
+offset_left = 0.0639954
+offset_right = 192.064
+offset_bottom = 205.0
+grow_horizontal = 0
+text = "Abdi 
+Yayan
+Kevin Macleod
+Yayan
+Abdi
+Yayan
+Abdi
+Yayan
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="engine" type="Label" parent="credit/Control/Panel/RichTextLabel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 156.0
+offset_bottom = 165.0
+text = "Tools used
+
+- Godot Engine 4.3
+- Aseprite 1.3.7
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="plugins" type="Label" parent="credit/Control/Panel/RichTextLabel"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 64.0
+offset_right = 832.0
+offset_bottom = 87.0
+text = "add-ons and plugin
+
+- none"
+metadata/_edit_use_anchors_ = true
+
+[node name="cx" type="Button" parent="credit/Control/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="anip" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lrapx")
+}
+
+[node name="menang" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ey05s")
+bus = &"music"
+
+[connection signal="pressed" from="Control/Panel/again" to="." method="_on_again_pressed"]
+[connection signal="pressed" from="Control/Panel/credit" to="." method="_on_credit_pressed"]
+[connection signal="pressed" from="Control/Panel/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="credit/Control/Panel/cx" to="." method="_on_cx_pressed"]

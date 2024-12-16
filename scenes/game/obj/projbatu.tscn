@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfprtr26iieyx"]
+
+[ext_resource type="Script" path="res://scenes/game/obj/projbatu.gd" id="1_j16gs"]
+[ext_resource type="PackedScene" uid="uid://derbxmigsnfwd" path="res://scenes/game/obj/batu.tscn" id="2_wirf0"]
+
+[sub_resource type="Curve" id="Curve_olh00"]
+_data = [Vector2(0.389286, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_pfefo"]
+offsets = PackedFloat32Array(0, 0.991071, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.935924, 0.991891, 0, 1, 0.939387, 0.938275, 0, 1)
+
+[node name="projbatu" type="Node2D"]
+script = ExtResource("1_j16gs")
+panjang = 8
+
+[node name="btrail" type="Line2D" parent="."]
+width = 5.0
+width_curve = SubResource("Curve_olh00")
+gradient = SubResource("Gradient_pfefo")
+joint_mode = 2
+begin_cap_mode = 1
+end_cap_mode = 2
+
+[node name="batu" parent="." instance=ExtResource("2_wirf0")]
+
+[node name="despawn" type="Timer" parent="."]

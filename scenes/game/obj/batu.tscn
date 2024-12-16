@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://derbxmigsnfwd"]
+
+[ext_resource type="Script" path="res://scenes/game/obj/batu.gd" id="1_il6w0"]
+[ext_resource type="Texture2D" uid="uid://dti4pdfhaqc7k" path="res://assets/anim/batuWeapon.png" id="2_4hll3"]
+[ext_resource type="AudioStream" uid="uid://bpvxb3sr811qi" path="res://assets/musics/hit sapu lidi.WAV" id="3_fxn7e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6m5v2"]
+radius = 4.0
+
+[node name="batu" type="Node2D"]
+script = ExtResource("1_il6w0")
+
+[node name="kena" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="kena"]
+shape = SubResource("CircleShape2D_6m5v2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4hll3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="kenasuara" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fxn7e")
+bus = &"sfx"
+
+[connection signal="body_entered" from="kena" to="." method="_on_kena_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

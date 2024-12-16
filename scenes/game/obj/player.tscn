@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://byxkn4e1pe5gu"]
+
+[ext_resource type="Script" path="res://scenes/game/obj/player.gd" id="1_1re44"]
+[ext_resource type="Texture2D" uid="uid://bgsogdtb7loug" path="res://assets/anim/player.png" id="2_c2fox"]
+[ext_resource type="PackedScene" uid="uid://b82us6rh8pnie" path="res://scenes/game/obj/ketapel.tscn" id="3_gjh87"]
+[ext_resource type="AudioStream" uid="uid://cir8mpmrhx7bl" path="res://assets/musics/walk.WAV" id="4_r8l1f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y68xi"]
+radius = 8.0
+height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1611"]
+atlas = ExtResource("2_c2fox")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppm6s"]
+atlas = ExtResource("2_c2fox")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewvfk"]
+atlas = ExtResource("2_c2fox")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67t4d"]
+atlas = ExtResource("2_c2fox")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yewxc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1611")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppm6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewvfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67t4d")
+}],
+"loop": true,
+"name": &"jalan",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_usd4e"]
+radius = 8.0
+height = 48.0
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_1re44")
+panjang_trail = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_y68xi")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yewxc")
+animation = &"jalan"
+
+[node name="slot" type="Node2D" parent="."]
+
+[node name="ketapel" parent="slot" instance=ExtResource("3_gjh87")]
+position = Vector2(16, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -720
+limit_top = 0
+limit_right = 4736
+limit_bottom = 720
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="sakit" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sakit"]
+shape = SubResource("CapsuleShape2D_usd4e")
+
+[node name="iframe" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="suarajalan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_r8l1f")
+volume_db = -10.0
+bus = &"sfx"
+
+[node name="cdjalan" type="Timer" parent="suarajalan"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="sakit" to="." method="_on_sakit_body_entered"]
+[connection signal="timeout" from="iframe" to="." method="_on_iframe_timeout"]
+[connection signal="timeout" from="suarajalan/cdjalan" to="." method="_on_cdjalan_timeout"]

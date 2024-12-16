@@ -1,0 +1,587 @@
+[gd_scene load_steps=10 format=3 uid="uid://jb2bhpioid4w"]
+
+[ext_resource type="Texture2D" uid="uid://8wnpc0m7hcju" path="res://assets/UI/mainback.png" id="1_p1bd7"]
+[ext_resource type="Script" path="res://scenes/menus/main.gd" id="1_x2nib"]
+[ext_resource type="Texture2D" uid="uid://cdeftv4gstq60" path="res://assets/UI/judul.png" id="2_76gkq"]
+[ext_resource type="AudioStream" uid="uid://c0hgwkpautf5i" path="res://assets/musics/menu.mp3" id="4_7bqhd"]
+[ext_resource type="PackedScene" uid="uid://7gqakk5ptv0x" path="res://scenes/game/effects/mtrail.tscn" id="4_vpe8v"]
+
+[sub_resource type="Animation" id="Animation_7l8al"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("option/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("credit/Control:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("credit:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -512)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("option:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, -512)]
+}
+
+[sub_resource type="Animation" id="Animation_i0mps"]
+resource_name = "credit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("credit/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("credit:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -512), Vector2(0, -128), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5380"]
+resource_name = "option"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("option/Control:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("option:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(640, -512), Vector2(640, -128), Vector2(640, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_osht4"]
+_data = {
+"RESET": SubResource("Animation_7l8al"),
+"credit": SubResource("Animation_i0mps"),
+"option": SubResource("Animation_d5380")
+}
+
+[node name="main" type="CanvasLayer"]
+script = ExtResource("1_x2nib")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p1bd7")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -384.0
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 224.0
+grow_horizontal = 2
+texture = ExtResource("2_76gkq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.711111
+anchor_right = 0.25005
+anchor_bottom = 0.821911
+offset_right = -0.0640001
+offset_bottom = 0.224
+text = "PLAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="option" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3125
+anchor_top = 0.711111
+anchor_right = 0.46255
+anchor_bottom = 0.821911
+offset_right = -0.0640001
+offset_bottom = 0.224
+toggle_mode = true
+text = "OPTION"
+metadata/_edit_use_anchors_ = true
+
+[node name="credit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5375
+anchor_top = 0.711111
+anchor_right = 0.68755
+anchor_bottom = 0.821911
+offset_right = -0.0640001
+offset_bottom = 0.224
+toggle_mode = true
+text = "CREDIT"
+metadata/_edit_use_anchors_ = true
+
+[node name="exit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.75
+anchor_top = 0.711111
+anchor_right = 0.90005
+anchor_bottom = 0.821911
+offset_right = -0.0640001
+offset_bottom = 0.224
+text = "EXIT"
+metadata/_edit_use_anchors_ = true
+
+[node name="option" type="Node2D" parent="."]
+process_mode = 3
+position = Vector2(640, -512)
+
+[node name="Control" type="Control" parent="option"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="optiontab" type="TabContainer" parent="option/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.178
+anchor_right = 0.5
+anchor_bottom = 0.178
+offset_left = -512.0
+offset_top = -32.16
+offset_right = 512.0
+offset_bottom = 383.84
+grow_horizontal = 2
+current_tab = 0
+
+[node name="Audio" type="TabBar" parent="option/Control/optiontab"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="master" type="HSlider" parent="option/Control/optiontab/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 81.0
+offset_right = 432.0
+offset_bottom = 113.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="mutemaster" type="Button" parent="option/Control/optiontab/Audio/master"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+text = "M"
+
+[node name="Label" type="Label" parent="option/Control/optiontab/Audio/master"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 144.0
+text = "Master Volume"
+vertical_alignment = 1
+
+[node name="sfx" type="HSlider" parent="option/Control/optiontab/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 161.0
+offset_right = -64.0
+offset_bottom = 193.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="mutesfx" type="Button" parent="option/Control/optiontab/Audio/sfx"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+text = "M"
+
+[node name="Label" type="Label" parent="option/Control/optiontab/Audio/sfx"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 144.0
+text = "SFX Volume"
+vertical_alignment = 1
+
+[node name="music" type="HSlider" parent="option/Control/optiontab/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 96.0
+offset_top = 161.0
+offset_right = 432.0
+offset_bottom = 193.0
+grow_horizontal = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="mutemusic" type="Button" parent="option/Control/optiontab/Audio/music"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+text = "M"
+
+[node name="Label" type="Label" parent="option/Control/optiontab/Audio/music"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 144.0
+text = "Music Volume"
+vertical_alignment = 1
+
+[node name="Graphics" type="TabBar" parent="option/Control/optiontab"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="window" type="OptionButton" parent="option/Control/optiontab/Graphics"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.003
+anchor_right = 0.25
+anchor_bottom = 0.003
+offset_left = -128.0
+offset_top = 159.941
+offset_right = 128.0
+offset_bottom = 191.941
+alignment = 1
+selected = 0
+item_count = 3
+popup/item_0/text = "720x1280"
+popup/item_1/text = "768x1366"
+popup/item_1/id = 1
+popup/item_2/text = "1080x1920"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="option/Control/optiontab/Graphics/window"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 256.0
+text = "Window size"
+vertical_alignment = 1
+
+[node name="fullscreen" type="Button" parent="option/Control/optiontab/Graphics"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.003
+anchor_right = 0.25
+anchor_bottom = 0.003
+offset_left = -128.0
+offset_top = 63.941
+offset_right = 128.0
+offset_bottom = 95.941
+toggle_mode = true
+text = "Full Screen Mode"
+
+[node name="Config" type="TabBar" parent="option/Control/optiontab"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="switch" type="Panel" parent="option/Control/optiontab/Config"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.125
+offset_top = 97.0
+offset_right = 384.0
+offset_bottom = 129.0
+
+[node name="switch" type="CheckButton" parent="option/Control/optiontab/Config/switch"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 384.0
+offset_bottom = 31.0
+button_pressed = true
+text = "Scroll for switching weapon"
+
+[node name="zoom" type="Panel" parent="option/Control/optiontab/Config"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.125
+offset_top = 161.0
+offset_right = 384.0
+offset_bottom = 193.0
+
+[node name="zoom" type="CheckButton" parent="option/Control/optiontab/Config/zoom"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 384.0
+offset_bottom = 31.0
+disabled = true
+text = "Scroll for zooming camera"
+
+[node name="mouse" type="Panel" parent="option/Control/optiontab/Config"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_right = 0.125
+offset_top = 225.16
+offset_right = 384.0
+offset_bottom = 257.16
+
+[node name="mouse" type="CheckButton" parent="option/Control/optiontab/Config/mouse"]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 384.0
+offset_bottom = 31.0
+text = "show mouse trail"
+
+[node name="close" type="Button" parent="option/Control"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 480.0
+offset_top = -32.0
+offset_right = 512.0
+grow_horizontal = 0
+text = "X"
+
+[node name="credit" type="Node2D" parent="."]
+position = Vector2(0, -512)
+
+[node name="Control" type="Control" parent="credit"]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="credit/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 108.0
+offset_top = 128.0
+offset_right = 1132.0
+offset_bottom = 512.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="credit/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.062
+anchor_right = 0.062
+offset_left = 0.511997
+offset_top = 64.0
+offset_right = 896.512
+offset_bottom = 320.0
+metadata/_edit_use_anchors_ = true
+
+[node name="jusul" type="Label" parent="credit/Control/Panel/RichTextLabel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_right = 192.0
+offset_bottom = 32.0
+grow_horizontal = 2
+text = "Buang Sampah"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="credit/Control/Panel/RichTextLabel/jusul"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 32.0
+offset_bottom = 211.0
+grow_horizontal = 2
+text = "Writer :
+
+Music :
+Sound effect :
+Graphic designer :
+
+Programmer :
+"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="credit/Control/Panel/RichTextLabel/jusul/Label2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.083
+anchor_right = 1.083
+offset_left = 0.0639954
+offset_right = 192.064
+offset_bottom = 205.0
+grow_horizontal = 0
+text = "Abdi 
+Yayan
+Kevin Macleod
+Yayan
+Abdi
+Yayan
+Abdi
+Yayan
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="engine" type="Label" parent="credit/Control/Panel/RichTextLabel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 156.0
+offset_bottom = 165.0
+tooltip_text = "maaf, laptop saya kentang, butuh waktu cukup lama untuk compile C# nya"
+mouse_filter = 1
+text = "Tools used
+
+- Godot Engine 4.3
+- Aseprite 1.3.7
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="plugins" type="Label" parent="credit/Control/Panel/RichTextLabel"]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 64.0
+offset_right = 832.0
+offset_bottom = 87.0
+tooltip_text = "yeah, gaada pakai add-ons satupuns"
+mouse_filter = 1
+text = "add-ons and plugin
+
+- none"
+metadata/_edit_use_anchors_ = true
+
+[node name="cx" type="Button" parent="credit/Control/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+text = "X"
+metadata/_edit_use_anchors_ = true
+
+[node name="musik" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7bqhd")
+autoplay = true
+bus = &"music"
+
+[node name="Anip" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_osht4")
+}
+
+[node name="mtrail" parent="." instance=ExtResource("4_vpe8v")]
+
+[connection signal="pressed" from="Control/play" to="." method="_on_play_pressed"]
+[connection signal="toggled" from="Control/option" to="." method="_on_option_toggled"]
+[connection signal="toggled" from="Control/credit" to="." method="_on_credit_toggled"]
+[connection signal="pressed" from="Control/exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="option/Control/optiontab/Audio/master" to="." method="_on_master_value_changed"]
+[connection signal="toggled" from="option/Control/optiontab/Audio/master/mutemaster" to="." method="_on_mutemaster_toggled"]
+[connection signal="value_changed" from="option/Control/optiontab/Audio/sfx" to="." method="_on_sfx_value_changed"]
+[connection signal="toggled" from="option/Control/optiontab/Audio/sfx/mutesfx" to="." method="_on_mutesfx_toggled"]
+[connection signal="value_changed" from="option/Control/optiontab/Audio/music" to="." method="_on_music_value_changed"]
+[connection signal="toggled" from="option/Control/optiontab/Audio/music/mutemusic" to="." method="_on_mutemusic_toggled"]
+[connection signal="item_selected" from="option/Control/optiontab/Graphics/window" to="." method="_on_window_item_selected"]
+[connection signal="toggled" from="option/Control/optiontab/Graphics/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="option/Control/optiontab/Config/switch/switch" to="." method="_on_switch_toggled"]
+[connection signal="toggled" from="option/Control/optiontab/Config/mouse/mouse" to="." method="_on_mouse_toggled"]
+[connection signal="pressed" from="option/Control/close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="credit/Control/Panel/cx" to="." method="_on_cx_pressed"]
+[connection signal="finished" from="musik" to="." method="_on_musik_finished"]
